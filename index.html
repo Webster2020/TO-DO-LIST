@@ -19,29 +19,34 @@
     
   <body>
     
-    <div class = "organizer">
+    <div class="organizer">
       
       <header>
-        <h1>TO-DO LIST</h1>
+        <h1 class="title">TO-DO LIST</h1>
       </header>
       
       <main>
         
-        <section class = "form">
-          <div class = "container">
-            <h1 class = "section-title">New task</h1>
-            <input class = "tasks-input" type="text" placeholder="Task theme">
-            <input class = "tasks-input" type="date">
-            <input class = "tasks-input" type="time">
-            <input class = "tasks-input" type="text" placeholder="Task contents">
+        <section class="form">
+          <div class="container">
+            <form>
+              <h1 class="section-title">New task</h1>
+              <input id="task-theme" name="task-theme" type="text" placeholder="Task theme">
+              <div>
+                <input id="task-date" name="task-date" type="date">
+                <input id="task-time" name="task-time" type="time">
+              </div>
+              <textarea id="task-contents" name="task-contents" rows="4" placeholder="Task contents"></textarea>
+              <button class="btn">+</button>
+            </form>
           </div>
         </section>
 
-        <section class = "tasks">
-          <div class = "container">
-            <h1 class = "section-title">Task List</h1>
-            <div class = "tasks-list">
-              <ul>..to create by js..
+        <section class="tasks">
+          <div class="container">
+            <h1 class="section-title">Task List</h1>
+            <div class="tasks-list">
+              <ul>..to create by js like in blog (p.6)..
                 <li>Task 1</li>
                 <li>Task 2</li>
                 <li>Task 3</li>
@@ -50,29 +55,37 @@
           </div>
         </section>
         
-        <section class = "tags">
-          <div class = "container">
-            <div class = "tags-list">
+        <section class="tags">
+          <div class="container">
+            <div class="tags-list tags-theme">
               <ul>
                 <li><a href="#">Tag 1</a></li>
                 <li><a href="#">Tag 2</a></li>
                 <li><a href="#">Tag 3</a></li>
               </ul>
-            </div>    
+            </div>
+            <div class="tags-list tags-date">
+              <ul>
+                <li><a href="#">Tag 1</a></li>
+                <li><a href="#">Tag 2</a></li>
+                <li><a href="#">Tag 3</a></li>
+              </ul>
+            </div> 
           </div>
         </section>
       
       </main>
       
       <footer>
-        <div class = "container">
-          <h3 class = "author">&copy;Michal Szwajgier</h3>
-          <div class = "socials">
+        <div class="container container-flex">
+          <div class="wrapper wrapper-left">
+            <h3 class="author">&copy; WEBSTER<span>2020</span></h3>
+          </div>
+          <div class="wrapper wrapper-right">
             <ul>
-              <li>fb</li>
-              <li>tw</li>
-              <li>goo</li>
-              <li>ins</li>
+              <li><a href="#"><i class="fab fa-facebook-square"></a></i></li>
+              <li><a href="#"><i class="fab fa-twitter-square"></a></i></li>
+              <li><a href="#"><i class="fab fa-google-plus-square"></a></i></li>
             </ul>
           </div>
         </div>

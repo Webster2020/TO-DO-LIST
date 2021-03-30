@@ -15,9 +15,12 @@ $color-ten: #1b4332;
 $font-text: 'Cairo', sans-serif;
 $font-header: 'Reggae One', cursive;
 
-$border-one: 4px solid $color-two;
-$border-two: 3px dotted $color-two;
-$border-three: 2px dashed $color-two;
+$border-one: 0px solid $color-nine;
+$border-two: 0px dotted $color-two;
+$border-three: 0px dashed $color-two;
+
+$transition-one: all 1s;
+$transition-two: all 0.5s;
 
 /* GLOBAL */
 
@@ -30,14 +33,15 @@ body {
   margin: 0;
   padding: 0;  
   font-family: $font-text;
-  font-size: 30px;
   font-weight: 400;
   color: $color-two;  
 }
 .organizer {
   max-width: 768px; //check breakpoint in bootstrap grid
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 10px 0;
   text-align: center;
+  background-color: $color-ten;
 }
 section {
   border: $border-two;
@@ -49,46 +53,118 @@ section {
 }
 
 /* HEADER */
-
 header {
-  border: $border-one;
+  background-color: $color-ten;
+}
+.title {
+  position: relative;
+  margin: 0 auto;
+  font-size: 50px;
+  &::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 250px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $color-two;
+    transition: $transition-one;
+  }
+  &:hover {
+		&::after {
+			background-color: $color-seven;
+		}
+  }
 }
 
 /* MAIN */
-
 main {
   border: $border-one;
 }
+
+/* MAIN -> FORM */
 .form {
   .section-title {
     font-size: 30px; //think about it later
+    border-radius: 5px;
+    background-color: $color-nine;
   }
-  .tasks-input {
+  input, textarea {
     display: block;
     margin: 0 auto;
     width: 100%;
+    padding: 5px;
+    background-color: $color-seven;
+    resize: vertical;
+    border-radius: 5px;
+    font-family: $font-text;
+    color: $color-two;
+    text-align: center;
+    transition: $transition-two;
+    &:hover {
+      background-color: $color-eight; 
+      border: 1px solid $color-five;
+    }
+    &::placeholder {
+      color: $color-two;
+      opacity: 0.9;
+    }
+  }
+  div > input {
+    display: inline-block;
+    float: left;
+    margin: 7px 0 8px;
+    width: 49.5%;
     background-color: #52b788;
+    resize: none;  
+  }
+  div > input:first-of-type {
+    float: left;
+    margin-right: 1%;
+  }
+  .btn {
+    display: block;
+    width: 80px;
+    height: 40px;
+    margin: 10px auto 20px;
+    background-color: $color-seven;
+    border-radius: 5px;
+    font-size: 30px;
+    color: $color-two;
+    transition: $transition-two;
+    &:hover {
+      background-color: $color-eight; 
+      border: 1px solid $color-five;
+    }
   }
 }
+
+/* MAIN -> TASKS */
+/* <<< TO DO >>> */
 .tasks {
   .section-title {
     font-size: 30px; //think about it later
+    border-radius: 5px;
+    background-color: $color-nine;
   }
   .tasks-list {
     margin: 0 auto;
     width: 100%;
-    background-color: #52b788;
+    background-color: $color-seven;
     ul {
       padding: 0;
       li {
         border: $border-three;
-        background-color: #1b4332;
+        background-color: $color-four;
         list-style: none;
       }
     }
   }
 }
 
+/* MAIN -> TAGS */
+/* <<< TO DO >>> */
 .tags {
   .tags-list {
     margin: 0 auto;
@@ -111,7 +187,47 @@ main {
 }
 
 /* FOOTER */
-
 footer {
-  border: $border-one;
+  background-color: $color-ten;
+}
+.container-flex {
+  display: flex;
+  align-items: center;
+}
+.wrapper-left {
+  flex: 1;
+  height: 40px;
+  text-align: left; 
+  .author {
+    margin: 0;
+    font-size: 20px;
+    line-height: 2;
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.wrapper-right {
+  flex: 1;
+  height: 40px;
+  text-align: right;
+  ul {
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+    line-height: 1.5;
+    li {
+      display: inline-block;
+      margin-left: 10px;
+      .fab {
+        margin: 0;
+        font-size: 30px;
+        color: $color-two;
+        &:hover {
+        color: $color-seven;
+        }
+      }
+    }
+  }
 }
