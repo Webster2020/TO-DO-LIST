@@ -169,8 +169,15 @@ main {
 }
 
 .tags .tags-list ul li a {
+  margin: 0 3px;
+  padding: 0 5px;
+  border: 3px solid #52b788;
   text-decoration: none;
   color: white;
+}
+
+.tags .tags-list ul li a:hover {
+  border-width: 5px;
 }
 
 /* FOOTER */
@@ -180,11 +187,12 @@ footer {
 
 .container-flex {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
 }
 
 .wrapper-left {
-  flex: 1;
   height: 40px;
   text-align: left;
 }
@@ -200,7 +208,6 @@ footer {
 }
 
 .wrapper-right {
-  flex: 1;
   height: 40px;
   text-align: right;
 }

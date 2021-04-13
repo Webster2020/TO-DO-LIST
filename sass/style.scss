@@ -116,7 +116,7 @@ main {
     float: left;
     margin: 7px 0 8px;
     width: 49.5%;
-    background-color: #52b788;
+    background-color: $color-seven;
     resize: none;  
   }
   div > input:first-of-type {
@@ -169,17 +169,23 @@ main {
   .tags-list {
     margin: 0 auto;
     width: 100%;
-    background-color: #52b788;
+    background-color: $color-seven;
     ul {
       padding: 0;
       li {
         display: inline-block;
-        border: $border-three;
-        background-color: #1b4332;
+        border: $border-three;    
+        background-color: $color-ten;
         list-style: none;
         a {
+          margin: 0 3px;
+          padding: 0 5px;
+          border: 3px solid $color-seven;
           text-decoration: none;
           color: $color-two;
+          &:hover {
+            border-width: 5px;
+          }
         }
       }
     }
@@ -192,10 +198,12 @@ footer {
 }
 .container-flex {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
 }
 .wrapper-left {
-  flex: 1;
+  //flex: 1;
   height: 40px;
   text-align: left; 
   .author {
@@ -209,7 +217,7 @@ footer {
 }
 
 .wrapper-right {
-  flex: 1;
+  //flex: 1;
   height: 40px;
   text-align: right;
   ul {
