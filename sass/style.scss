@@ -12,6 +12,8 @@ $color-eight: #40916c;
 $color-nine: #2d6a4f;
 $color-ten: #1b4332;
 
+$color-error: #f5cac3;
+
 $font-text: 'Cairo', sans-serif;
 $font-header: 'Reggae One', cursive;
 
@@ -108,12 +110,20 @@ main {
     }
     &::placeholder {
       color: $color-two;
+      text-align: center;
       opacity: 0.9;
     }
   }
+  .task-contents {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .input-error {
+    background-color: $color-error !important;
+  }
   div > input {
     display: inline-block;
-    float: left;
+    //float: left;
     margin: 7px 0 8px;
     width: 49.5%;
     background-color: $color-seven;
@@ -140,6 +150,7 @@ main {
   }
 }
 
+
 /* MAIN -> TASKS */
 /* <<< TO DO >>> */
 .tasks {
@@ -153,12 +164,53 @@ main {
     width: 100%;
     background-color: $color-seven;
     ul {
-      padding: 0;
+      padding: 5px 15px;
       li {
+        margin: 10px 0;
         border: $border-three;
         background-color: $color-four;
         list-style: none;
-      }
+        color: $color-ten;
+        .task-main {
+          display: flex;
+          .task-main-data {
+            display: inline-block;
+            flex: 4;
+            p {
+              display: inline-block;
+            }
+          }
+          .task-accordion {
+            display: inline-block;
+            flex: 1;
+            p {
+              display: inline-block;
+              margin-right: 10px;
+              width: 20px;
+            }
+          }
+        }
+        .task-done {
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 5%;
+            height: 3px;
+            width: 70%;
+            background-color: $color-nine;
+          }
+        }
+        .task-content {
+          display: none;     
+        }
+        .task-content-active {
+          display: block;
+          padding: 10px 0;
+          border-top: 3px solid $color-six;
+        }
+      } 
     }
   }
 }

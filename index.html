@@ -30,13 +30,13 @@
         <section class="form">
           <div class="container">
             <form>
-              <h1 class="section-title">New task</h1>
-              <input id="task-theme" name="task-theme" type="text" placeholder="Task theme">
+              <h1 class="section-title">New Task</h1>
+              <input class="task-theme" name="task-theme" type="text" placeholder="Task theme">
               <div>
-                <input id="task-date" name="task-date" type="date">
-                <input id="task-time" name="task-time" type="time">
+                <input class="task-date" name="task-date" type="date">
+                <input class="task-time" name="task-time" type="time">
               </div>
-              <textarea id="task-contents" name="task-contents" rows="4" placeholder="Task contents"></textarea>
+              <textarea class="task-contents" name="task-contents" rows="3" placeholder="Task contents"></textarea>
               <button class="btn">+</button>
             </form>
           </div>
@@ -46,10 +46,39 @@
           <div class="container">
             <h1 class="section-title">Task List</h1>
             <div class="tasks-list">
-              <ul>..to create by js like in blog (p.6)..
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
+              <ul><!--..to create by js like in blog (p.6)..-->
+  
+                <script id="template-task" type="text/x-handlebars-template">
+                  <li class="task-wrapper-{{ id }}">
+                    <div class="task-main task-id-{{ id }}">
+                      <div class="task-main-data">
+                        <i class="fas fa-layer-group"></i>
+                        <p>{{ theme }}</p>
+                      </div>
+                      <div class="task-main-data">
+                        <i class="far fa-calendar-alt"></i>
+                        <p>{{ date }}</p>
+                      </div>
+                      <div class="task-main-data">
+                        <i class="far fa-clock"></i>
+                        <p>{{ time }}</p>
+                      </div>
+                      <div class="task-accordion">
+                        <p class="btn btn-accordion"><i class="fas fa-bars"></i></p>
+                      </div>
+                      <div class="task-accordion">
+                        <p class="btn btn-done"><i class="fas fa-check"></i></p>
+                      </div>
+                      <div class="task-accordion">
+                        <p class="btn btn-remove"><i class="fas fa-times"></i></p>
+                      </div>
+                    </div>
+                    <div class="task-content task-content-{{ id }}">
+                      <p>{{ contents }}</p>                      
+                    </div>
+                  </li>
+                </script>  
+
               </ul>
             </div>
           </div>
@@ -92,6 +121,9 @@
       </footer>
       
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="js/script.js"></script>
     
   </body>
 

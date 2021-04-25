@@ -96,7 +96,6 @@ main {
 
 .form div > input {
   display: inline-block;
-  float: left;
   margin: 7px 0 8px;
   width: 49.5%;
   background-color: #52b788;
