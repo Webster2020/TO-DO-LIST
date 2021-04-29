@@ -46,22 +46,26 @@
           <div class="container">
             <h1 class="section-title">Task List</h1>
             <div class="tasks-list">
-              <ul><!--..to create by js like in blog (p.6)..-->
+              <ul>
   
                 <script id="template-task" type="text/x-handlebars-template">
-                  <li class="task-wrapper-{{ id }}">
-                    <div class="task-main task-id-{{ id }}">
+                  <li 
+                    class="task-wrapper-{{ id }}" 
+                    data-theme="{{ theme }}"
+                    data-date="{{ date }}"
+                  >
+                    <div class="task-main task-active task-id-{{ id }}">
                       <div class="task-main-data">
                         <i class="fas fa-layer-group"></i>
-                        <p>{{ theme }}</p>
+                        <p id="task-{{ id }}-theme">{{ theme }}</p>
                       </div>
                       <div class="task-main-data">
                         <i class="far fa-calendar-alt"></i>
-                        <p>{{ date }}</p>
+                        <p id="task-{{ id }}-date">{{ date }}</p>
                       </div>
                       <div class="task-main-data">
                         <i class="far fa-clock"></i>
-                        <p>{{ time }}</p>
+                        <p id="task-{{ id }}-time">{{ time }}</p>
                       </div>
                       <div class="task-accordion">
                         <p class="btn btn-accordion"><i class="fas fa-bars"></i></p>
@@ -87,17 +91,39 @@
         <section class="tags">
           <div class="container">
             <div class="tags-list tags-theme">
-              <ul>
+              <ul> 
+                <i>themses ->&nbsp;&nbsp;</i>
                 <li><a href="#">Tag 1</a></li>
                 <li><a href="#">Tag 2</a></li>
                 <li><a href="#">Tag 3</a></li>
+                
+                <script id="template-tag-theme" type="text/x-handlebars-template">
+                  <li 
+                    class="tag-theme-wrapper-{{ id }}" 
+                    data-theme="{{ theme }}"
+                  >
+                    <a href="#">{{ theme }}</a>
+                  </li>
+                </script>
+                
               </ul>
             </div>
             <div class="tags-list tags-date">
-              <ul>
+              <ul>  
+                <i>dates ->&nbsp;&nbsp;</i>
                 <li><a href="#">Tag 1</a></li>
                 <li><a href="#">Tag 2</a></li>
                 <li><a href="#">Tag 3</a></li>
+                
+                <script id="template-tag-date" type="text/x-handlebars-template">
+                  <li 
+                    class="tag-date-wrapper-{{ id }}" 
+                    data-date="{{ date }}"
+                  >
+                    <a href="#">{{ date }}</a>
+                  </li>
+                </script>
+                
               </ul>
             </div> 
           </div>

@@ -17,6 +17,7 @@ const select = {
   },
   tasks: {
     tasksList: '.tasks-list ul',
+    tasksListElem: '.tasks-list li',
     taskAccordion: '.btn-accordion',
     taskDone: '.btn-done',
     taskRemove: '.btn-remove',
@@ -27,12 +28,11 @@ const select = {
   },
 };
 
-
 /* CLASSes / IDs */
 const className = {
   task: {
-    taskVisible: '.task-visible',  //TO DO class css to creat (click on tag)
-    taskDetailsVisible: '.task-details-visible', //TO DO class css to creat (accordion)
+    taskActive: 'task-active',  //TO DO class css to creat (click on tag)
+    taskContentActive: 'task-content-active', //TO DO class css to creat (accordion)
   },
 };
 
@@ -41,6 +41,16 @@ const className = {
 const inputsObj = {};
 let taskCounter = 1;
 const tasksArr = [];
+let tagCounter = 1;
+const tagsArr = [];
+const themeArr = [];
+const dateArr = [];
+/*
+const tagsObj = {
+  theme: [],
+  date: [],
+} 
+*/
 
 /* INPUT CLASS */
 /* class get id of input and set value of input */
@@ -122,13 +132,13 @@ class Task {
     thisTask.dom.taskRemove = document.querySelector(`.task-id-${thisTask.id} ${select.tasks.taskRemove}`);
     thisTask.dom.taskMain = document.querySelector(`.task-id-${thisTask.id}`);
     thisTask.dom.content = document.querySelector(`.task-content-${thisTask.id}`);
+    
+    //console.log('data-theme:')
+    //console.log(thisTask.dom.wrapper.getAttribute('data-theme'));
   }
   
   render() {
     const thisTask = this;
-    
-    //taskCounter++;
-    //thisTask.id = taskCounter;
     
     const tplTaskSource = document.querySelector('#template-task').innerHTML; //source - part of kode html with {{xx}} elements
     const tplTask = Handlebars.compile(tplTaskSource); // try sth like this: const tplHello = Handlebars.compile('{{ firstName }}');
@@ -142,21 +152,20 @@ class Task {
   initAccordion() {
     const thisTask = this;
     
-    console.log('init Button Accordion');
+    //console.log('init Button Accordion');
     thisTask.dom.accordion.addEventListener('click', function(event) {
       event.preventDefault();
-      console.log('click acc');
-      thisTask.dom.content.classList.toggle('task-content-active');
+      //console.log('click acc');
+      thisTask.dom.content.classList.toggle(className.task.taskContentActive);
     });
   }
   
   initTaskDone() {
     const thisTask = this;
     
-    console.log('init Button Done');
     thisTask.dom.taskDone.addEventListener('click', function(event) {
       event.preventDefault();
-      console.log('click done');
+      //console.log('click done');
       thisTask.dom.taskMain.classList.toggle('task-done');
     });
   }
@@ -164,7 +173,6 @@ class Task {
   initTaskRemove() {
     const thisTask = this;
     
-    console.log('init Button Remove');
     thisTask.dom.taskRemove.addEventListener('click', function(event) {
       event.preventDefault();
       console.log('click remove');
@@ -174,16 +182,113 @@ class Task {
       thisTask.isDeleted = true;
       //3. set thisTask.isDeleted = true inside global tasksArr
       tasksArr[thisTask.id - 1].isDeleted = thisTask.isDeleted;
-      console.log(tasksArr);
+      //console.log(tasksArr);
     });
     
+    /* TO DO */
+    /* IF IT WAS ONLY ONE OF TAG TYPE -> REMOVE THIS TAG FROM TAGS */
   }
   
 }
 
 
 /* TAGS CLASS <TO DO> */
+class Tag {
+  constructor(data, tagType) {
+    const thisTag = this;
+    
+    //preferences
+    thisTag.data = data;
+    thisTag.id = data.id;
+    thisTag.theme = data.theme;
+    thisTag.date = data.date;
 
+    thisTag.addTheme = newThemeTag;
+    thisTag.addDate = newDateTag;
+       
+    //methods
+    thisTag.render();
+  }
+  
+  render() {
+    const thisTag = this;
+    
+    /* THEME */
+    if (thisTag.addTheme) {
+      const tplTagSource = document.querySelector('#template-tag-theme').innerHTML; //source - part of kode html with {{xx}} elements
+      const tplTag = Handlebars.compile(tplTagSource); // try sth like this: const tplHello = Handlebars.compile('{{ firstName }}');
+
+      const generatedHTML = tplTag(thisTag.data);
+
+      const targetElement = document.querySelector(select.tags.tagsTheme);
+      targetElement.insertAdjacentHTML('beforeend', generatedHTML);
+    }
+    /* DATE */
+    if (thisTag.addDate) {
+      const tplTagSource = document.querySelector('#template-tag-date').innerHTML; //source - part of kode html with {{xx}} elements
+      const tplTag = Handlebars.compile(tplTagSource); // try sth like this: const tplHello = Handlebars.compile('{{ firstName }}');
+
+      const generatedHTML = tplTag(thisTag.data);
+
+      const targetElement = document.querySelector(select.tags.tagsDate);
+      targetElement.insertAdjacentHTML('beforeend', generatedHTML);
+    }
+  } 
+   
+  getElements() {
+    const thisTag = this;
+    
+    thisTag.dom = {};
+    thisTag.dom.themeWrapper = document.querySelector(`.tag-theme-wrapper-${thisTag.id}`);
+    thisTag.dom.themeTag = thisTag.dom.themeWrapper.querySelector('a');
+    
+    thisTag.dom.dateWrapper = document.querySelector(`.tag-date-wrapper-${thisTag.id}`);
+    thisTag.dom.dateTag = thisTag.dom.dateWrapper.querySelector('a');
+    
+    thisTag.dom.tasks = document.querySelectorAll(select.tasks.tasksListElem);
+    
+  }
+  
+  /* ========================= */
+  /* \/ \/  \/   \/   \/   \/  */
+  
+  showTasks() {
+    const thisTag = this;
+    
+    //1. add event listener for dom element (tag)
+    thisTag.dom.themeTag.addEventListener('click', function(event) {
+      
+      event.preventDefault();
+      //console.log(event);
+      //console.log('tag theme clicked')
+      //console.log(thisTag.dom.themeWrapper.getAttribute('data-theme'));
+      
+      //2. querySelectorAll - all tasks
+      for (let task of thisTag.dom.tasks) {
+        console.log('single task');
+        console.log(task.getAttribute('data-theme'));
+        //task.classList.toggle(className.task.taskActive);
+      }
+      
+    });
+    
+    thisTag.dom.dateTag.addEventListener('click', function(event) {
+      event.preventDefault();
+      //console.log(event);
+      //console.log('tag date clicked')
+      //console.log(thisTag.dom.dateWrapper.getAttribute('data-date'));
+    });
+    
+    
+    //3. find tasks, which have the same "theme" tag as clicked tag link OR
+    //4. find tasks, which have the same "date" tag as clicked tag link 
+    //5. hide rest of tasks, which dont fit with this condition (toggle class className.task.taskVisible) -> create styles for this class in css before
+  }
+  
+  /*^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+  /* ========================= */
+  
+}
 
 /* APP */
 const app = {
@@ -208,21 +313,15 @@ const app = {
     thisApp.dom.inputTaskBtn = document.querySelector(select.form.inputButton);
     
     thisApp.dom.inputs = document.querySelectorAll(select.form.inputs);
-    
-    //console.log('Input Dom: ', thisApp.dom);
-
   },
 
   initButton: function() {
     const thisApp = this;
     
-    //console.log('>>> INIT BUTTON <<<')
     thisApp.addTaskButton = document.querySelector(select.form.inputButton);
     
     thisApp.addTaskButton.addEventListener('click', function(event) {
       event.preventDefault();
-      //IT WORKS!!!!
-      //console.log('Button clicked!');
        
       //1) take values of all inputs >>> DONE!
       const dataTask = {
@@ -252,21 +351,45 @@ const app = {
           };
         }
       }
-      
-       
+         
       if (!wrongData) {      
         //create new Task object
         const task = new Task(dataTask); 
-        //add task to global tasks array
+        //add task to global tasks array   
         tasksArr.push(task);
+        
+        let newThemeTag = true;
+        let newDateTag = true;
+        
+        if (themeArr.length < 1 || !themeArr.includes(task.theme)) {
+          themeArr.push(task.theme);
+        } else {
+          newThemeTag = false;
+        }
+        
+        if (dateArr.length < 1 || !dateArr.includes(task.date)) {
+          dateArr.push(task.date);
+        } else {
+          newDateTag = false;
+        }
+
+        /* if themeArr */
+        //create new Tag object     
+        const tag = new Tag(dataTask, newThemeTag, newDateTag);
+        //add task to global tasks array
+        tagsArr.push(tag);
+        
         //clear values of input and inputsObj
         for (let input in inputsObj) {
           const singleInput = inputsObj[input];
           singleInput.value = false;
           singleInput.dom.value = '';
         };
+        //console.log(tasksArr);
+        //console.log(tagsArr[tagCounter - 1].data.theme);
+        //console.log(tagsArr[tagCounter - 1].data.date);
         taskCounter++;
-        console.log(tasksArr);
+        tagCounter++;
       }; 
       
     });
