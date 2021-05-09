@@ -50,11 +50,11 @@
   
                 <script id="template-task" type="text/x-handlebars-template">
                   <li 
-                    class="task-wrapper-{{ id }}" 
+                    class="task-wrapper task-wrapper-{{ id }} task-active" 
                     data-theme="{{ theme }}"
                     data-date="{{ date }}"
                   >
-                    <div class="task-main task-active task-id-{{ id }}">
+                    <div class="task-main task-id-{{ id }}">
                       <div class="task-main-data">
                         <i class="fas fa-layer-group"></i>
                         <p id="task-{{ id }}-theme">{{ theme }}</p>
@@ -93,9 +93,7 @@
             <div class="tags-list tags-theme">
               <ul> 
                 <i>themses ->&nbsp;&nbsp;</i>
-                <li><a href="#">Tag 1</a></li>
-                <li><a href="#">Tag 2</a></li>
-                <li><a href="#">Tag 3</a></li>
+                <li><a class="tag-theme-wrapper-all" href="#">ALL</a></li>
                 
                 <script id="template-tag-theme" type="text/x-handlebars-template">
                   <li 
@@ -111,9 +109,7 @@
             <div class="tags-list tags-date">
               <ul>  
                 <i>dates ->&nbsp;&nbsp;</i>
-                <li><a href="#">Tag 1</a></li>
-                <li><a href="#">Tag 2</a></li>
-                <li><a href="#">Tag 3</a></li>
+                <li><a class="tag-date-wrapper-all" href="#">ALL</a></li>
                 
                 <script id="template-tag-date" type="text/x-handlebars-template">
                   <li 
@@ -152,5 +148,7 @@
     <script src="js/script.js"></script>
     
   </body>
+
+</html>
 
 </html>

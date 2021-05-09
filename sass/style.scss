@@ -99,6 +99,7 @@ main {
     padding: 5px;
     background-color: $color-seven;
     resize: vertical;
+    border: 2px solid $color-five;
     border-radius: 5px;
     font-family: $font-text;
     color: $color-two;
@@ -106,7 +107,7 @@ main {
     transition: $transition-two;
     &:hover {
       background-color: $color-eight; 
-      border: 1px solid $color-five;
+      border: 2px solid $color-five;
     }
     &::placeholder {
       color: $color-two;
@@ -139,13 +140,14 @@ main {
     height: 40px;
     margin: 10px auto 20px;
     background-color: $color-seven;
+    border: 2px solid $color-five;
     border-radius: 5px;
     font-size: 30px;
     color: $color-two;
     transition: $transition-two;
     &:hover {
       background-color: $color-eight; 
-      border: 1px solid $color-five;
+      border: 2px solid $color-five;
     }
   }
 }
@@ -163,19 +165,24 @@ main {
     margin: 0 auto;
     width: 100%;
     background-color: $color-seven;
-    ul {
+    border-radius: 5px;
+    ul {  
       padding: 5px 15px;
+      .task-wrapper {
+        display: none;
+      }
+      .task-active {
+        display: block !important;
+      }
       li {
         margin: 10px 0;
+        border-radius: 5px;
         border: $border-three;
         background-color: $color-four;
         list-style: none;
         color: $color-ten;
-        .task-active {
-          display: flex !important;
-        }
         .task-main {
-          display: none;
+          display: flex;
           .task-main-data {
             display: inline-block;
             flex: 4;
@@ -225,6 +232,7 @@ main {
     margin: 0 auto;
     width: 100%;
     background-color: $color-seven;
+    border-radius: 5px;
     ul {
       padding: 0;
       li {
@@ -235,6 +243,7 @@ main {
         a {
           margin: 0 3px;
           padding: 0 5px;
+          border-radius: 5px;
           border: 3px solid $color-seven;
           //outline: 3px solid $color-seven;
           text-decoration: none;
@@ -243,6 +252,9 @@ main {
             border-width: 5px;
             //outline-width: 5px;
           }
+        }
+        .shadow {
+          opacity: 0.4;
         }
       }
     }
