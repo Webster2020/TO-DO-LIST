@@ -66,8 +66,9 @@ Project is not diveded on component (like in e.g. React), because of its structu
  1. HTML - content of aplication
  2. SCSS - all styles
  3. JS - all functions and logic for aplication divided into objects and classes
- 4. root file: index.html
- 5. configuration files: gitignore, package.json etc.
+ 4. Handlebars.js - HTML templates
+ 5. root file: index.html
+ 6. configuration files: gitignore, package.json etc.
 
 ### How did I create this project?
 
@@ -76,7 +77,10 @@ Project was prepared based on my own idea.
 ## Plan for future dvelopment
 
  - Fix minor bugs in tags
- - Refactoring code - divide script.js into parts (every class in separate file)
+ - Refactor code - divide script.js into parts (every class in separate file)
+ - Add new functionalities
+ - Connect with server
+ - Possiibility to create user account
 
 ## Authors
 
