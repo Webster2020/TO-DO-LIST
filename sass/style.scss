@@ -39,7 +39,7 @@ body {
   color: $color-two;  
 }
 .organizer {
-  max-width: 768px; //check breakpoint in bootstrap grid
+  max-width: 768px;
   margin: 10px auto;
   padding: 10px 0;
   text-align: center;
@@ -86,9 +86,10 @@ main {
 }
 
 /* MAIN -> FORM */
+
 .form {
   .section-title {
-    font-size: 30px; //think about it later
+    font-size: 30px;
     border-radius: 5px;
     background-color: $color-nine;
   }
@@ -124,7 +125,6 @@ main {
   }
   div > input {
     display: inline-block;
-    //float: left;
     margin: 7px 0 8px;
     width: 49.5%;
     background-color: $color-seven;
@@ -154,7 +154,7 @@ main {
 
 
 /* MAIN -> TASKS */
-/* <<< TO DO >>> */
+
 .tasks {
   .section-title {
     font-size: 30px; //think about it later
@@ -226,7 +226,7 @@ main {
 }
 
 /* MAIN -> TAGS */
-/* <<< TO DO >>> */
+
 .tags {
   .tags-list {
     margin: 0 auto;
@@ -245,12 +245,10 @@ main {
           padding: 0 5px;
           border-radius: 5px;
           border: 3px solid $color-seven;
-          //outline: 3px solid $color-seven;
           text-decoration: none;
           color: $color-two;
           &:hover {
             border-width: 5px;
-            //outline-width: 5px;
           }
         }
         .shadow {
@@ -272,7 +270,6 @@ footer {
   align-items: center;
 }
 .wrapper-left {
-  //flex: 1;
   height: 40px;
   text-align: left; 
   .author {
@@ -286,7 +283,6 @@ footer {
 }
 
 .wrapper-right {
-  //flex: 1;
   height: 40px;
   text-align: right;
   ul {

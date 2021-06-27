@@ -462,13 +462,6 @@ const app = {
           singleInput.value = false;
           singleInput.dom.value = '';
         };
-        
-        // console.log('tasksArr');
-        // console.log(tasksArr);
-        // console.log('tagsArr');
-        // console.log(tagsArr);
-        //console.log(tagsArr[tagCounter - 1].data.theme);
-        //console.log(tagsArr[tagCounter - 1].data.date);
         taskCounter++;
         tagCounter++;
       }; 
